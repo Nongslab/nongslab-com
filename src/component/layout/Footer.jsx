@@ -13,7 +13,7 @@ const Footer = () => {
             <img src={FooterLogo} alt="Nongslab Logo" className="w-40 md:w-44" />
 
             <p className="text-light max-w-md leading-relaxed">
-              A two-person digital production studio by Muhammad Rafi and David Isser Harel. High-performance websites, UI/UX design, and custom web applications.
+              Nongslab is a digital production studio founded in 2024. We build high-performance websites, UI/UX design, and custom web applications, from design to launch.
             </p>
           </div>
         </div>
