@@ -1,115 +1,141 @@
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
+import useScrollReveal from '../../hooks/useScrollReveal';
 
 const studioFacts = [
     {
         title: 'Independent Studio',
         desc: 'Built on modern tech standards, free from agency overhead.',
+        color: 'bg-orange-100 text-orange-600',
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="7" width="18" height="13" rx="2" />
+                <path d="M8 7V5a4 4 0 018 0v2" />
+            </svg>
+        ),
     },
     {
         title: 'Direct Execution',
         desc: 'You collaborate directly with the creators. No unnecessary layers, just clear communication and technical focus from concept to launch.',
+        color: 'bg-blue-100 text-blue-600',
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="2">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+        ),
     },
     {
         title: 'Design and code in-house',
         desc: 'No outsourcing, no handoff gaps between design and development.',
+        color: 'bg-emerald-100 text-emerald-600',
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="2">
+                <path d="M8 6l-6 6 6 6M16 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M14 4l-4 16" strokeLinecap="round" />
+            </svg>
+        ),
     },
 ];
 
 const About = () => {
+    const sectionRef = useScrollReveal();
+
     return (
-        <section id="about" className="scroll-mt-16 py-12 md:py-20 bg-white">
-            {/* Section title */}
-            <div className="container mx-auto px-4 mb-4 lg:mb-10">
-                <div className="grid lg:grid-cols-2 gap-2 items-start">
-                    <div>
-                        <h2 className="text-primary text-body font-medium font-sans mb-2">
+        <section id="about" ref={sectionRef} className="relative scroll-mt-16 py-20 md:py-28 overflow-hidden bg-surface-warm">
+            {/* Decorative */}
+            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent" />
+            <div className="absolute bottom-10 left-10 w-32 h-32 rounded-full border-2 border-primary/10 animate-float" />
+
+            <div className="container mx-auto px-4 lg:px-8 relative z-10">
+                {/* Section Header with Number */}
+                <div className="flex items-start gap-6 mb-14">
+                    <div className="reveal-hidden reveal-left">
+                        <span className="text-6xl md:text-8xl font-extrabold text-primary/10 font-mono leading-none select-none">01</span>
+                    </div>
+                    <div className="reveal-hidden reveal-right pt-2">
+                        <span className="inline-flex items-center gap-2 text-primary text-sm font-mono font-medium mb-3">
+                            <span className="w-8 h-px bg-primary" />
                             About Nongslab
+                        </span>
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-ink leading-tight max-w-xl">
+                            An independent studio crafting high-performance websites and intuitive digital experiences.
                         </h2>
                     </div>
-                    <div>
-                        <h3 className="text-h5 lg:text-h4 font-bold text-gray-900 leading-tight font-sans">
-                            Nongslab is an independent digital production studio dedicated to crafting high-performance websites and intuitive digital experiences. We bridge the gap between design and development, helping brands launch clear, scalable, and impactful products.
-                        </h3>
-                    </div>
                 </div>
-            </div>
 
-            <div className="container mx-auto px-4 lg:px-8 mb-12">
-                <div className="grid lg:grid-cols-2 gap-6">
-                    {/* Left: studio image card */}
-                    <div
-                        className="relative rounded-3xl overflow-hidden bg-cover bg-center bg-no-repeat flex flex-col justify-between px-6 md:px-10 lg:px-[40px] py-12 md:py-20 lg:py-[80px] min-h-[500px] lg:min-h-[600px]"
-                        style={{
-                            backgroundImage: `url('/images/limitless_creative.png')`,
-                            backgroundColor: '#0d0d0d',
-                        }}
-                    >
-                        <div className="absolute inset-0 bg-black/40 z-0" />
+                {/* Main Grid */}
+                <div className="grid lg:grid-cols-5 gap-6 mb-14">
+                    {/* Left: Photo Card (spans 3 cols) */}
+                    <div className="reveal-hidden reveal-left reveal-stagger-1 lg:col-span-3">
+                        <div className="relative rounded-3xl overflow-hidden group card-lift h-full min-h-[400px]">
+                            <img
+                                src="/images/about-studio.jpg"
+                                alt="Nongslab studio"
+                                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-                        <div className="relative z-10 flex flex-col justify-between h-full text-white">
-                            <div className="mb-auto">
-                                <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold font-sans">
-                                    Design and code, under one roof
+                            <div className="relative z-10 flex flex-col justify-end h-full p-8 md:p-10">
+                                <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-3">
+                                    Design and code,
+                                    <br />
+                                    <span className="text-primary-light">under one roof</span>
                                 </h3>
-                            </div>
-                            <div className="flex-1 hidden md:block"></div>
-
-                            <div>
-                                <p className="text-base md:text-lg lg:text-xl leading-relaxed max-w-md mb-[24px] opacity-90">
+                                <p className="text-white/70 text-base max-w-md mb-6">
                                     Fewer handoffs mean faster decisions and work that ships.
                                 </p>
                                 <a
                                     href="#contact"
-                                    className="group inline-flex items-center gap-2 bg-[#f28c38] text-white px-6 py-3 rounded-full hover:bg-orange-600 transition-colors duration-300 font-sans font-medium text-base md:text-lg min-h-[44px]"
+                                    className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-semibold text-sm w-fit group/btn hover:shadow-lg hover:shadow-primary/30"
                                 >
                                     Discuss Your Project
-                                    <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+                                    <FiArrowRight className="group-hover/btn:translate-x-1 transition-transform" />
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    {/* Right: verifiable studio facts (no invented metrics) */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 h-full">
+                    {/* Right: Fact Cards (spans 2 cols) */}
+                    <div className="lg:col-span-2 flex flex-col gap-4">
                         {studioFacts.map((fact, i) => (
-                            <div
-                                key={fact.title}
-                                className={`rounded-3xl p-6 md:p-8 flex flex-col justify-between h-full ${
-                                    i === 0
-                                        ? 'bg-primary text-white'
-                                        : 'bg-[#4A5568] text-white'
-                                } ${i === 2 ? 'sm:col-span-2' : ''}`}
-                            >
-                                <div>
-                                    <h4 className="text-xl md:text-2xl font-bold font-sans mb-3">
-                                        {fact.title}
-                                    </h4>
+                            <div key={fact.title} className={`reveal-hidden reveal-right reveal-stagger-${i + 2}`}>
+                                <div className="bg-white rounded-2xl p-6 card-lift group cursor-default border border-border hover:border-primary/20 hover:shadow-md">
+                                    <div className="flex items-start gap-4">
+                                        <div className={`w-12 h-12 rounded-xl ${fact.color} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                                            {fact.icon}
+                                        </div>
+                                        <div>
+                                            <h4 className="text-base font-bold text-ink mb-1.5">{fact.title}</h4>
+                                            <p className="text-muted text-sm leading-relaxed">{fact.desc}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p className={`text-sm md:text-base leading-relaxed mt-auto ${i === 0 ? 'text-white/90' : 'text-white/90'}`}>
-                                    {fact.desc}
-                                </p>
                             </div>
                         ))}
                     </div>
                 </div>
-            </div>
 
-            {/* Bottom CTA card */}
-            <div className="container mx-auto mt-16 md:mt-20 px-4 lg:px-8">
-                <div className="relative rounded-3xl bg-[#FFF3EC] flex flex-col-reverse md:flex-row items-center justify-between gap-8 p-6 sm:px-10 md:px-10 md:py-4">
-                    <div className="w-full text-center md:text-left max-w-2xl">
-                        <h3 className="text-light md:text-h5 lg:text-h4 font-bold text-primary leading-relaxed font-sans">
-                            Have a project in mind? Tell us the goal, and we will tell you how we would get there.
-                        </h3>
-                    </div>
-
-                    <div className="md:w-auto md:max-w-[200px] lg:max-w-[200px] flex justify-center md:justify-end">
+                {/* Bottom CTA Banner */}
+                <div className="reveal-hidden reveal-scale reveal-stagger-3">
+                    <div className="relative rounded-3xl overflow-hidden group">
                         <img
-                            src="/images/increase_up.png"
-                            alt="Business growth illustration"
-                            className="w-3/4 sm:w-2/3 md:w-full h-auto object-contain"
+                            src="/images/cta-project.jpg"
+                            alt="Start a project"
+                            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary-light/80" />
+                        <div className="relative z-10 px-8 md:px-12 py-10 md:py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+                            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white max-w-xl leading-relaxed">
+                                Have a project in mind? Tell us the goal, and we will tell you how we would get there.
+                            </h3>
+                            <a
+                                href="#contact"
+                                className="magnetic-btn shrink-0 bg-white text-primary px-8 py-4 rounded-2xl font-bold text-base hover:shadow-xl flex items-center gap-2 group/cta"
+                            >
+                                Let's Talk
+                                <FiArrowRight className="group-hover/cta:translate-x-1 transition-transform" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
